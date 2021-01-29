@@ -2,16 +2,15 @@
 
 > **Important concepts learned**
 >
-> - keycode
 > - HTML data-* attributes
-> - keydown  and transitionend event listener
+> - keydown  and transitionend event listeners
 >
 
 ___
 
 HTML data- attributes was used to embed custom data to our elements. These data attributes are used to hook up keyboard keys along with an audio element.
 
-```
+```react
 <div data-key="65" class="key">
   <kbd>A</kbd>
   <span class="sound">clap</span>
@@ -25,7 +24,7 @@ Event listeners are added to the window object on **keydown** trigger. Attribute
 
 The audio can be played using the play method of the audio object. Then, the class playing is added to the pressed key to add the styles.
 
-```
+```react
   window.addEventListener('keydown', (e) => {
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
     const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
@@ -38,7 +37,7 @@ The audio can be played using the play method of the audio object. Then, the cla
 
 To make the key revert to its normal styling after being pressed, a **transitionend** event listener for each key was added. The removeTransition function is run once the event is fired. Note that function syntax has to be used for **this** to point to the key object, whereas the arrow syntax makes **this** point to the window object.
 
-```
+```react
     function removeTransition(e) {
       // console.log(e)
       if (e.propertyName !== 'transform') {
