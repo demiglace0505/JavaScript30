@@ -48,9 +48,9 @@ To make the key revert to its normal styling after being pressed, a **transition
     }
     ...
 
-	const keys = document.querySelectorAll('.key')
-    keys.forEach( (key) => {
-      key.addEventListener('transitionend', removeTransition)
-    })
+      const keys = document.querySelectorAll('.key')
+      keys.forEach( (key) => {
+        key.addEventListener('transitionend', removeTransition)
+      })
 ```
 
