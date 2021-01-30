@@ -62,12 +62,33 @@
       background: black;
       position: absolute;
       top: 50%;
+      transform-origin: 100%;
+      transform: rotate(90deg);
+      transition: all 0.05s;
+      transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
     }
 
   </style>
 
   <script>
+    const secHand = document.querySelector('.second-hand');
+    const minHand = document.querySelector('.min-hand');
+    const hourHand = document.querySelector('.hour-hand');
 
+    const setDate =() => {
+      const now = new Date();
+
+      const secondsInDegrees = (now.getSeconds() / 60 * 360) + 90; // convert to base 100, + 90 is to offset the css rotate(90) of the hand class
+      secHand.style.transform = `rotate(${secondsInDegrees}deg)`;
+
+      const minsInDegrees = (now.getMinutes() / 60 * 360) + 90;
+      minHand.style.transform = `rotate(${minsInDegrees}deg)`;
+
+      const hoursInDegrees = (now.getHours() / 12 * 360) + 90;
+      hourHand.style.transform = `rotate(${hoursInDegrees})`
+    }
+
+    setInterval(setDate, 1000);
 
   </script>
 </body>
